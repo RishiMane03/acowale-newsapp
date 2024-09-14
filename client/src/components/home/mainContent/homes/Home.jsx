@@ -15,7 +15,7 @@ const Homes = ({ allNews }) => {
     setSelectedFilter(category);
     if (category) {
       try {
-        const response = await axios.post('http://localhost:8000/api/news/getNewsCategory', { category });
+        const response = await axios.post('https://acowale-newsapp-backend.onrender.com/api/news/getNewsCategory', { category });
         setIsCategory(response.data.data.articles);
       } catch (error) {
         console.error('Error fetching category data:', error);
