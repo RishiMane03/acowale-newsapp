@@ -51,7 +51,7 @@ const Popular = ({ byDefaultCategory, isCategory, selectedFilter, openModal }) =
                   </div>
                 </div>
                 <div className='text row'>
-                  <h1 className='title'>{val.title.slice(0, 40)}...</h1>
+                  <h1 className='title'  style={{cursor: "pointer"}}>{val.title.slice(0, 40)}...</h1>
                   <div className='date'>
                     <i className='fas fa-calendar-days'></i>
                     <label>{formatDate(val.publishedAt)}</label>
