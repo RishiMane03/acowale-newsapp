@@ -25,6 +25,24 @@ main .container {
 .sideContent .heading h6 {
   background-color: #000;
 }
+.mainContent .searchBarDiv{
+  margin-bottom: 1rem;
+  background-color: #ebebeb;
+  border: 1px solid #4e4e4e;
+  width: 40%;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+.mainContent .searchBarDiv input{
+  padding: 0.5rem 1rem;
+  background-color: #ebebeb;
+  font-size: 1.2rem;
+  outline: none;
+  width: 90%;
+  border: none;
+  color: #4e4e4e;
+}
+ 
 @media screen and (max-width: 768px) {
   main .container {
     flex-direction: column;

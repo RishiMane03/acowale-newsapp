@@ -45,7 +45,29 @@ const getNewsCategory = async (req, res) => {
     }
 }
 
+const getSearchNews = async (req,res)=>{
+    const apiKey = process.env.GNEWS_API_KEY;
+    const { searchValue } = req.body
+
+    const url = `https://gnews.io/api/v4/search?q=${searchValue}&token=${apiKey}`
+    
+    try {
+        const response = await axios.get(url)
+        console.log(response.data);
+        res.send({
+            status: 'success',
+            data: response.data
+        })
+    }catch(error){
+        res.send({
+            status: 'error',
+            message: error
+        })
+    }
+}
+
 module.exports = {
     getAllNews,
-    getNewsCategory
+    getNewsCategory,
+    getSearchNews
 }

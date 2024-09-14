@@ -1,12 +1,11 @@
 import React from "react";
 import "./Popular.css";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Heading from "../../../common/heading/Heading";
 
-const Popular = ({ byDefaultCategory, isCategory, selectedFilter, openModal }) => {
+const Popular = ({ byDefaultCategory, isCategory, selectedFilter, openModal, searchValueData }) => {
   const settings = {
     className: "center",
     centerMode: false,
@@ -34,12 +33,18 @@ const Popular = ({ byDefaultCategory, isCategory, selectedFilter, openModal }) =
     return date.toLocaleDateString('en-GB', options);
   };
 
+  // Determine which data to display: search results, category, or default news
+  const newsData = 
+    searchValueData.length > 0 ? searchValueData : 
+    isCategory.length > 0 ? isCategory : 
+    byDefaultCategory;
+
   return (
     <section className='popular'>
       <Heading title='Popular' />
       <div className='content'>
         <Slider {...settings}>
-          {(isCategory.length > 0 ? isCategory : byDefaultCategory).map((val) => (
+          {newsData.map((val) => (
             <div className='items' key={val.id} onClick={() => openModal(val)}>
               <div className='box shadow'>
                 <div className='images row'>
@@ -47,7 +52,7 @@ const Popular = ({ byDefaultCategory, isCategory, selectedFilter, openModal }) =
                     <img src={val.image} alt='' />
                   </div>
                   <div className='category category1'>
-                    <span>{selectedFilter || 'General'}</span>
+                    <span>{selectedFilter || (isCategory.length > 0 ? 'Category' : 'General')}</span>
                   </div>
                 </div>
                 <div className='text row'>
@@ -61,6 +66,19 @@ const Popular = ({ byDefaultCategory, isCategory, selectedFilter, openModal }) =
             </div>
           ))}
         </Slider>
+      </div>
+
+      {/* News Ticker */}
+      <div className='news-ticker'>
+        <div className='ticker-wrapper'>
+          <div className='ticker'>
+            {newsData.map((val) => (
+              <span className='ticker-item' key={val.id}>
+                {val.title}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
