@@ -54,7 +54,7 @@ const Homes = ({ allNews }) => {
 
   const handleSearchValue = async (e) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/news/getSearchNews', { searchValue });
+      const response = await axios.post('https://acowale-newsapp-backend.onrender.com/api/news/getSearchNews', { searchValue });
       console.log("search data: ", response.data.data.articles);
       
       setSearchValueData(response.data.data.articles);
