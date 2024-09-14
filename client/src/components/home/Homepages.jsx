@@ -9,7 +9,7 @@ const Homepages = () => {
 
   const handleData = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/news/getAllNews');
+      const response = await axios.get('https://acowale-newsapp-backend.onrender.com/api/news/getAllNews');
       setAllNews((prevNews) => [...prevNews, ...response.data.data.articles]);
     } catch (error) {
       console.error('Error fetching data:', error);
